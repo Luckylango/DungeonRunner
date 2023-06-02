@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontalInput;
     float veritcalInput;
+    
     Vector3 moveDirection;
 
     Rigidbody rb;
@@ -53,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
+        veritcalInput = Input.GetAxisRaw("Veritcal");
 
     }
 
