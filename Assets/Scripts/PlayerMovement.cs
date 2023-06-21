@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    public bool grounded;
 
     public Transform orientation;
 
@@ -32,6 +32,13 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+   public Vector3 movementVector;
+
+    void start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     private void Start()
     {
@@ -103,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            Vector3 tempVelocity = rb.velocity;
         }
     }
 
