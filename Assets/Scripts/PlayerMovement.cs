@@ -54,6 +54,16 @@ public class PlayerMovement : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
+        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        {
+            Debug.Log("Player tried to jump");
+            readyToJump = false;
+
+            Jump();
+
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
+
         MyInput();
         SpeedControl();
 
@@ -76,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
+        /*
         if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
@@ -83,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
-        }
+        } */
     }
 
     private void MovePlayer()
@@ -118,8 +129,10 @@ public class PlayerMovement : MonoBehaviour
     {
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
+        Debug.Log(rb.velocity);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        float y = rb.velocity.y;
+        Debug.Log("Y is " + y);
     }
 
     private void ResetJump()

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerDashing : MonoBehaviour
 {
     Rigidbody rig;
-    CapsuleCollider collider;
+    CapsuleCollider CC;
 
     float originalHeight;
 
@@ -26,8 +26,8 @@ public class PlayerDashing : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         pM = GetComponent<PlayerMovement>();
-        collider = GetComponent<CapsuleCollider>();
-        originalHeight = originalHeight = collider.height;
+        CC = GetComponent<CapsuleCollider>();
+        originalHeight = originalHeight =CC.height;
     }
 
     // Update is called once per frame
@@ -55,13 +55,13 @@ public class PlayerDashing : MonoBehaviour
     private void Sliding()
     {
 
-        collider.height = reducedHeight;
+        CC.height = reducedHeight;
         rig.AddForce(transform.forward * slideSpeed, ForceMode.VelocityChange);
     }
 
     private void GoUp()
     {
-        collider.height = originalHeight;
+        CC.height = originalHeight;
     }
 
 
