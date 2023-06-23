@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerDashing : MonoBehaviour
 {
     Rigidbody rig;
     CapsuleCollider CC;
-
-    float originalHeight;
+   
+    // finding the original height of the player to calculate how the players transformation alters when sliding
+    float originalHeight; //whnat paltyor hsdidehfg height5 is nortmalyy rgheheeheh - Rhys
 
     [Header("Sliding")]
     public float reducedHeight;
